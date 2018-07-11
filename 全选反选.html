@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title> new document </title>
+  <meta name="generator" content="editplus" />
+  <meta name="author" content="" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+ </head>
+
+ <body>
+   <button value="1">全选</button>
+   <button value="2">反选</button>
+   <button value="3">全不选</button>
+   <br>
+   <input type="checkbox" value="">包子
+   <input type="checkbox">芹菜
+   <input type="checkbox">饺子
+   <input type="checkbox">嫂子
+   <input type="checkbox">猪肉
+   <input type="checkbox">牛肉
+   <input type="checkbox">羊肉
+
+   <script>
+		var oIn  = document.getElementsByTagName("input");
+		var oBtn = document.getElementsByTagName("button");
+		for(var i=0;i<oBtn.length;i++){
+			oBtn[i].index = i;
+			oBtn[i].onclick = function(){
+				if(this.index == 0){
+					for(var j=0;j<oIn.length;j++){
+						oIn[j].checked = true;
+					}
+				}
+				else if(this.index == 1){
+					for(var j=0;j<oIn.length;j++){
+						oIn[j].checked = !oIn[j].checked; //无论值是什么都与之前的相反
+					}
+				}
+				else if(this.index == 2){
+					for(var j=0;j<oIn.length;j++){
+						oIn[j].checked = false;
+					}
+				}
+			}
+		}
+						 /*
+						if(oIn[j].checked){
+							oIn[j].checked = false;
+						}
+						else{
+							oIn[j].checked = true;
+						}
+						*/
+   </script>
+ </body>
+</html>
