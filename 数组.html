@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>
+  <meta name="generator" content="editplus" />
+  <meta name="author" content="" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+	<style>
+		.id{
+			width:100px;height:100px;  background-color:red;
+		}
+	</style>
+ </head>
+
+ <body>
+ <div class="id">
+	
+ </div>
+  <script>
+	  var numbers = [1,2,3,4,5,6,10,11];
+	  /*
+	  var friends = [{ name : 'liy',age : 18},{name : 'yy',age : 19},{name : 'zz',age:20}];
+	  var myMap = numbers.map(function(x){
+		  if(x % 2==0){
+			return x;
+		  }
+	  });
+	  console.log(numbers);
+	  console.log(myMap);
+	  console.log(myMap.length);
+	  myMap.reverse();
+	  myMap.sort(function(a,b){
+		return a - b;
+	  });
+	  friends.sort(function(a,b){
+		return b.age - a.age;
+	  });
+	  for(var i=0; i<myMap.length;i++){
+			console.log(myMap[i]);
+	  }
+	  for(var i=0; i<friends.length;i++){
+			console.log(friends[i]);
+	  }
+	  var num = numbers.join('-');
+	  console.log(numbers.toString());
+	  console.log(num);
+	  */
+	  
+	  console.log(numbers.reduce(function(a,b){
+		return b;
+	  }))
+  </script>
+ </body>
+</html>

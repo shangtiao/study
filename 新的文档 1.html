@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title> new document </title>
+  <meta name="generator" content="editplus" />
+  <meta name="author" content="" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+ </head>
+
+ <body>
+  <script>
+	function sum(x = 1,y = 2,z){
+		return x + y + z;
+	}
+	console.log(sum(1,2));
+	var a = 1;
+	var b = 2;
+	[a,b] = [b,a];
+	console.log(a,b);
+	console.log(`你正在收看的是${a}。
+  即将播放的是${b}。`)
+    var numbers = [1,2,3,4,5,6,7,13];
+	//numbers.splice(2,2);
+	numbers.splice(1,1,2,22,222);
+	var count = numbers.length;
+	var iterator = numbers[Symbol.iterator]();
+	while(count--){
+	console.log(iterator.next().value);
+	}
+	function m13(element){
+		return (element % 13 ==0)?true:false;
+	}
+	//console.log(numbers.find(m13));//可以通过传入函数来过滤搜索。只能传入函数。
+	//console.log(numbers.indexOf(13));//不能传入函数，只能用于数组内存在的元素的搜索
+  </script>
+ </body>
+</html>

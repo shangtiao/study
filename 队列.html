@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title> 队列 </title>
+  <meta name="generator" content="editplus" />
+  <meta name="author" content="" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+ </head>
+
+ <body>
+  <script>
+	function Priqueue(){
+		var item = [];
+		function ele(element,pri){
+			this.element = element;
+			this.pri = pri;
+		}
+		this.priqueue = function(element,pri){
+			var on = true;
+			var e = new ele(element,pri);
+			for(var i =0;i<item.length;i++){
+				if(e.pri < item[i].pri){
+					item.splice(i,0,e);
+					on = false;
+					break;
+				}
+			}
+			if(on){
+			item.push(e);
+			}
+		}
+		this.show = function(){
+			for(var i = 0;i<item.length;i++){
+				console.log(`${item[i].element}---${item[i].pri}`)
+			}
+		}
+	}
+	var p = new Priqueue();
+	p.priqueue('liy',3);
+	p.priqueue('wang',2);
+	p.priqueue('anning',1);
+	p.show()
+  </script>
+ </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title> new document </title>
+  <meta name="generator" content="editplus" />
+  <meta name="author" content="" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+ </head>
+
+ <body>
+  <script>
+	function Stack(){
+		var item = [];
+		this.push = function(x){
+			item.push(x);
+		}
+		this.pop = function(){
+			return item.pop();	 
+		}
+		this.peek = function(){
+			return item[item.length - 1];
+		}
+		this.isEmpty = function(){
+			return item.length == 0?true:false;
+		}
+		this.clear = function(){
+			item = [];
+		}
+		this.size = function(){
+			return item.length;
+		}
+		this.show = function(){
+			//var m = item.map(function(x){return x}); 
+			//return m;
+			return item.toString();
+		}
+	}
+	var s = new Stack();
+	let v = '9';
+	//const 赋值常量
+	console.log(v);
+	console.log(s.isEmpty());
+	s.push(1);
+	s.push(2);
+	s.push(3);
+	s.push(4);
+	s.push(5);
+	console.log(cast10to2(10));
+	var string = '0123456789';
+	console.log(string[1]);
+	/*
+	console.log(s.peek());
+	console.log(s.isEmpty());
+	console.log(s.size());
+	console.log(s.show());
+	console.log(s.pop());
+	console.log(s.show());
+	*/
+	function cast10to2(x){
+		var c ='';
+		var t = new Stack();
+		while(x > 0){
+			var con = parseInt(x % 2);
+			t.push(con);
+			x = parseInt(x /2);
+		}
+		while(!t.isEmpty()){
+			c += t.pop().toString();
+		}
+		return c;
+	}
+  </script>
+ </body>
+</html>
