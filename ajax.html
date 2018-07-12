@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title> ajax 封装</title>
+  <meta name="generator" content="editplus" />
+  <meta name="author" content="" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+ </head>
+
+ <body>
+	<button id= "btn">点击</button>
+	<div id="box">这是一个DIV</div>
+
+  <script type="text/javascript">
+	  var oBtn = document.getElementById("btn");
+	  var oBox = document.getElementById("box");
+	  oBtn.onclick = function(){
+		  /*
+		var xhr = new XMLHttpRequest();
+		xhr.open('get','qq.txt','true');
+		xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xhr.send();
+		xhr.onreadystatechange = function(){
+			if( xhr.readyState == 4 ){
+				if( xhr.status >= 200 && xhr.status < 300 ){
+					var responseT =  xhr.responseText;
+						oBox.innerHTML = responseT;
+				}
+				else{
+					alert("出了点问题，状态码为:" + xhr.status );
+				}
+			}
+		}
+		 
+		var xhr = new XMLHttpRequest();
+		xhr.open('post','qq.txt','true');
+		xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		xhr.send();
+		xhr.onreadystatechange = function(){
+			if( xhr.readyState == 4 ){
+				if( xhr.status >= 200 && xhr.status < 300 ){
+					var responseT =  xhr.responseText;
+						oBox.innerHTML = responseT;
+				}
+				else{
+					alert("出了点问题，状态码为:" + xhr.status );
+				}
+			}
+		}
+	  }
+	  */
+
+		ajax({
+			url : 'qq.txt',
+			success : function(a){
+				alert(a);
+			},
+			error : function(b){
+				alert("出现了错误，错误码为: " + b);
+			},
+			data : {
+				name : 'liyang',
+				age : '13'
+			}
+		});
+	  function ajax(json){
+			var xhr = new XMLHttpRequest();
+			var method = json.method || 'get';
+			var ansy = json.ansy || true;
+			var url = json.url;
+			var success = json.success;
+			var error = json.error;
+			var data = '';
+			for(var key in json.data){
+				data += key + '=' +json.data[key] + '&'; 
+			}
+			if( method == 'get' ){
+				url += '?' + data ;
+				xhr.open( method,url,ansy )
+				xhr.send();
+			}
+			if( method == 'post' ){
+				xhr.open( method,url,ansy );
+				xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+				xhr.send(data);
+			}
+			xhr.onreadystatechange = function(){
+				if( xhr.readyState == 4 ){
+					if( xhr.status >=200 && xhr.status < 300 ){
+						return success(xhr.responseText);
+					}
+					else
+					{
+						return error(xhr.status);
+					}
+				}
+			}
+	  }
+	  }
+	
+  </script>
+ </body>
+</html>
