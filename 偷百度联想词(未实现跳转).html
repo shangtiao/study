@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title> new document </title>
+  <meta name="generator" content="editplus" />
+  <meta name="author" content="" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <style>
+  *{
+	margin:0;padding:0;
+  }
+  ul li{
+	list-style:none;
+  }
+	div{
+		width:400px;margin:100px auto;
+	}
+	input{
+		width:400px;height:40px;letter-spacing:1px;text-indent:10px;outline:none;border:2px solid #ddd;
+	}
+	#ul{
+		width:100%; border:2px solid #bbb;border-top:none;display:none;
+	}
+	#ul li{
+		width:100% ; border-bottom:1px solid #bbb;height:40px;line-height:40px;text-indent:10px;font-size:14px;font-family:'黑体';
+		
+	}
+	#ul li:hover{
+		background-color:#ddd;cursor:pointer;
+	}
+  </style>
+ </head>
+
+ <body>
+  <div>
+	<input type="text" id="search">
+	<ul id="ul">
+		<!-- <li>联想词1</li>
+		<li>联想词2</li>
+		<li>联想词3</li>
+		<li>联想词4</li>
+		<li>联想词5</li>
+		<li>联想词6</li> -->
+	</ul>
+  </div>
+
+  <script type="text/javascript">
+	var oUl = document.getElementById("ul");
+	var oS = document.getElementById("search");
+	
+	
+/*
+	oS.onkeydown = function(){
+		if( oS.value ){
+			oUl.style.display = 'block';
+		}
+		else{
+			oUl.style.display = 'none';
+		}
+	}
+*/
+	oS.onkeyup = function(){
+		var val = this.value;
+		var oScript = document.createElement("script");
+		oScript.src = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd="+ val + "&cb=fly";
+		document.body.appendChild(oScript);
+		if( val ){
+			oUl.style.display = 'block';
+		}else{
+			oUl.style.display = 'none';
+		}
+	}
+
+	function fly(mJson){
+		oUl.innerHTML = '';
+		for(var i =0;i<mJson.s.length;i++){
+			var oLi = document.createElement("li");
+			oLi.innerHTML = mJson.s[i];
+			oUl.appendChild(oLi);
+		}
+	}
+  </script>
+ </body>
+</html>
