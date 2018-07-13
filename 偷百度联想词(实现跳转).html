@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title> new document </title>
+  <meta name="generator" content="editplus" />
+  <meta name="author" content="" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <style>
+  *{
+	margin:0;padding:0;
+  }
+  ul li{
+	list-style:none;
+  }
+	div{
+		width:400px;margin:100px auto;
+	}
+	input{
+		width:400px;height:40px;letter-spacing:1px;text-indent:10px;outline:none;border:2px solid #ddd;
+	}
+	#ul{
+		width:100%; border:2px solid #bbb;border-top:none;display:none;
+	}
+	#ul li{
+		width:100% ;height:40px;
+	}
+	#ul li:hover{
+		background-color:#ddd;cursor:pointer;
+	}
+	#ul li a{
+	display:block;width:100%;height:100%;line-height:40px;color:black;font-size:14px;font-family:'黑体';text-indent:10px;text-decoration:none;
+  }
+  </style>
+ </head>
+
+ <body>
+  <div>
+	<input type="text" id="search">
+	<ul id="ul">
+		<!-- <li>联想词1</li>
+		<li>联想词2</li>
+		<li>联想词3</li>
+		<li>联想词4</li>
+		<li>联想词5</li>
+		<li>联想词6</li> -->
+	</ul>
+  </div>
+
+  <script type="text/javascript">
+  /* 自我总结 ： 
+    1. 获取百度的链接
+	2. 使用script的src跨域
+	3. 一定要记得把script添加到页面，否则跨域没意义
+	4. cb = fly 调用fly函数 fly函数名在百度上可以任意，但是自己写的话自身页面上要有该函数方法
+	5. fly的参数是一个JSON,且参数里的属性s为数组，存放百度的一些信息
+  */
+	var oUl = document.getElementById("ul");
+	var oS = document.getElementById("search");
+	oS.onkeyup = function(){   
+		var val = this.value;
+		var oScript = document.createElement("script");
+		oScript.src = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd="+ val + "&cb=fly";
+		document.body.appendChild(oScript);
+		if( val ){
+			oUl.style.display = 'block';
+		}else{
+			oUl.style.display = 'none';
+		}
+	}
+	function fly(mJson){
+		oUl.innerHTML = '';
+		for(var i =0;i<mJson.s.length;i++){
+			var oLi = document.createElement("li");
+			oLi.innerHTML ='<a href="https://www.baidu.com/s?wd='+ mJson.s[i] +'" target="_blank">' + mJson.s[i] + '</a>';
+			oUl.appendChild(oLi);
+		}
+	}
+  </script>
+ </body>
+</html>
